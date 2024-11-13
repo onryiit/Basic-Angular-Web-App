@@ -29,3 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Including This Project
 
 I create a basic form table functionality with `Angular`. I used `Tailwind` and `Bootstrap` for style.And in addition I m using `Angular Material`
+
+And I m using this project for test angular and learn angular functions.
