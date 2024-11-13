@@ -1,0 +1,24 @@
+
+  
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field class="mat-form-field-input">
+  <mat-label>Input</mat-label>
+  <input matInput>
+</mat-form-field>
+<mat-form-field class="mat-form-field-select">
+  <mat-label>Select</mat-label>
+  <mat-select>
+    <mat-option value="one">First option</mat-option>
+    <mat-option value="two">Second option</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="mat-form-field-text-area">
+  <mat-label>deneme</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align = end>
+  <button mat-button class="btn" mat-dialog-close>Cancel</button>
+  <button mat-button class="btn" [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

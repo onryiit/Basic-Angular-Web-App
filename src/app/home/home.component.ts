@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent {
-  title = 'material';
+export class HomeComponent {
 
+  title = 'material';
+  date:any;
   selectedTime: any;
   buttons:any []=[];
   constructor(public dialog: MatDialog) {}
@@ -26,3 +27,4 @@ export class AppComponent {
     });
   }
 }
+

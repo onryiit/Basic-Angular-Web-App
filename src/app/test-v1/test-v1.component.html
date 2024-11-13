@@ -1,0 +1,48 @@
+<form [formGroup]="gelirGiderForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Kategori</mat-label>
+      <mat-select formControlName="kategori">
+        <mat-option *ngFor="let kategori of kategoriler" [value]="kategori.id">
+          {{ kategori.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Kategori</mat-label>
+      <mat-select formControlName="gelirGider">
+        <mat-option *ngFor="let item of gelirGiders" [value]="item.id">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <div class="form-group">
+      <label for="tarih">Tarih:</label>
+      <input type="date" class="form-control" id="tarih" formControlName="tarih">
+    </div>
+  
+    <div class="form-group" *ngIf="isGelirOrGider === 1">
+      <label for="gider">Gider:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="gider"
+        formControlName="gider"
+      />
+    </div>
+    <div class="form-group">
+      <label for="desc">Descriptin:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="desc"
+        formControlName="desc"
+      />
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+  </form>
+  
+  <div *ngIf="data">
+    <span [style.color]="gelirGiderForm.valid ? 'green' : 'red'">{{ data }}</span>
+  </div>

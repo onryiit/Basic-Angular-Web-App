@@ -1,0 +1,14 @@
+<mat-tab-group>
+  <mat-tab label="Customer Card"> </mat-tab>
+  <mat-tab label="Client"> Content 2 </mat-tab>
+</mat-tab-group>
+
+<button mat-button class="btn btn-secondary" (click)="openDialog()">
+  Open dialog
+</button>
+<ngx-mat-timepicker [(ngModel)]="date"></ngx-mat-timepicker>
+<div class="button-container">
+  <button *ngFor="let button of buttons" class="custom-button">
+    {{ button.name }}
+  </button>
+</div>

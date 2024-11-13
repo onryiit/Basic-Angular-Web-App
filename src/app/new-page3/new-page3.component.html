@@ -1,0 +1,13 @@
+<p>{{id}}</p>
+
+<button mat-button (click)="increase()">+</button>
+<button mat-button (click)="decrease()">-</button>
+<span>{{count}}</span>
+<button class="btn btn-outline-primary" (click)="sendToData()" style="margin-left: 15px;">Send</button>
+
+<div class="card" *ngIf="customBindToChild">
+  <div class="card-body">
+    {{customBindToChild}}
+  </div>
+</div>
+
