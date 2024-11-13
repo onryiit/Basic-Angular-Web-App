@@ -1,15 +1,14 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
-  selector: '[appKeyPress]'
+  selector: '[appEnterKey]'
 })
-export class KeyPressDirective {
+export class EnterKeyDirective {
+  @Output() enterPressed = new EventEmitter<void>();
 
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    console.log(event)
-    if (event.key === 'Enter') {
-      console.log('Enter key was pressed!');
-    }
+  @HostListener('document:keydown.enter', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    event.preventDefault();
+    this.enterPressed.emit();
   }
 }

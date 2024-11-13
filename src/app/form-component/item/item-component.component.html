@@ -6,8 +6,9 @@
     <div fxLayout="columun" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutGap="2%">
       <mat-form-field fxFlex="49%">
         <mat-label>Header Title</mat-label>
-        <input matInput  type="text" placeholder="Header Title" formControlName="headerTitle" required />
-        <mat-hint matSuffix fxLayoutAlign="end center"> <mat-icon matTooltip="Write a Header">help_outline</mat-icon></mat-hint>
+        <input matInput type="text" placeholder="Header Title" formControlName="headerTitle" required />
+        <mat-hint matSuffix fxLayoutAlign="end center"> <mat-icon
+            matTooltip="Write a Header">help_outline</mat-icon></mat-hint>
       </mat-form-field>
       <mat-form-field fxFlex="49%">
         <mat-label>Choose Type</mat-label>
@@ -22,13 +23,13 @@
     <div fxLayout="columun" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutGap="2%">
       <mat-form-field fxFlex="49%">
         <mat-label>Choose a date</mat-label>
-        <input  matInput [matDatepicker]="picker" formControlName="date">
+        <input matInput [matDatepicker]="picker" formControlName="date" readonly required>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
 
-    </mat-form-field>
-      <mat-checkbox class="example-margin" formControlName="checkbox"  color="primary">is it
+      </mat-form-field>
+      <mat-checkbox class="example-margin" formControlName="checkbox" color="primary" required>is it
         Okay?
       </mat-checkbox>
     </div>
@@ -37,5 +38,12 @@
 <div mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button class="mat-primary mt-16 mt-sm-0" [mat-dialog-close]="true" (click)="sendDataToDatabase()"
-    [disabled]="currentForm.invalid || currentForm.pristine" appKeyPress>Save Data</button>
+    [disabled]="currentForm.invalid || currentForm.pristine" appEnterKey (enterPressed)="sendDataToDatabase()">
+    Save Data
+  </button>
+  <!--! you can do with keyup for without click save just use enter on your keyboard but also you can click it just added enter functionality  -->
+  <!-- <button mat-button class="mat-primary mt-16 mt-sm-0" [mat-dialog-close]="true" (click)="sendDataToDatabase()"
+    [disabled]="currentForm.invalid || currentForm.pristine" (keyup.enter)="sendDataToDatabase()">
+    Save Data
+  </button> -->
 </div>

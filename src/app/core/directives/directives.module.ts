@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { HighlightDirective } from './highlight/highlight.directive';
-import { KeyPressDirective } from './keyPress/keyPress.directive';
+import { EnterKeyDirective } from './keyPress/keyPress.directive';
 
 
 @NgModule({
-  declarations: [HighlightDirective,KeyPressDirective ],
+  declarations: [HighlightDirective,EnterKeyDirective ],
   imports: [],
   providers: [],
   bootstrap: [],
-  exports: [HighlightDirective,KeyPressDirective ],
+  exports: [HighlightDirective,EnterKeyDirective ],
 })
 export class DirectiveModule {}

@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelect } from '@angular/material/select';
 import * as moment from 'moment';
 @Component({
@@ -25,7 +26,8 @@ export class ItemComponentComponent implements OnInit, AfterViewInit {
   count: number = 1;
   constructor(
     private formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public dialogRef: MatDialogRef<ItemComponentComponent>
   ) {}
   ngOnInit(): void {
     this.createForm();
@@ -60,5 +62,6 @@ export class ItemComponentComponent implements OnInit, AfterViewInit {
     const data = this.currentForm.getRawValue();
     data.date = moment(data.date).utc().unix();
     localStorage.setItem('formData', JSON.stringify(data));
+    this.dialogRef.close();
   }
 }
