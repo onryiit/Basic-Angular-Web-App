@@ -1,0 +1,20 @@
+<amplify-authenticator [loginMechanisms]="['email']" [hideSignUp]="true">
+
+</amplify-authenticator>
+
+<div class="language-switcher">
+
+<button mat-button [matMenuTriggerFor]="menu">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <img class="flag mr-8" [src]="'assets/images/flags/' + selectedLanguage.flag + '.png'" />
+    <span class="iso text-uppercase">{{ selectedLanguage.id }}</span>
+</div></button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngFor="let lang of languages" (click)="updateLanguage(lang)">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <img class="flag mr-8" [src]="'assets/images/flags/' + lang.flag + '.png'" />
+      <span class="iso text-uppercase">{{ lang.id }}</span>
+    </div>
+  </button>
+</mat-menu>
+</div>

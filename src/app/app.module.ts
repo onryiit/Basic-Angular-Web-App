@@ -13,7 +13,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
-import { Route, RouterModule } from '@angular/router';
 import { NewPageComponent } from './new-page/new-page.component';
 import { NewPage1Component } from './new-page1/new-page1.component';
 import { NewPage2Component } from './new-page2/new-page2.component';
@@ -40,28 +39,19 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PipeModule } from './core/pipes/pipe.module';
 import { DirectiveModule } from './core/directives/directives.module';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
-
-
-export const routerExp: Route[] = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'promise', component: PromiseComponent },
-  { path: 'observable', component: ObservableComponent },
-  { path: 'rxjs', component: Rxjs1Component },
-  { path: 'rxjsSubject', component: RxjsSubjectComponent },
-  { path: 'testV1', component: TestV1Component },
-  { path: 'form', component: FormComponentComponent },
-  {
-    path: 'newpage',
-    component: NewPageComponent,
-    children: [
-      { path: 'newpage/:id', component: NewPage1Component },
-      { path: 'two', component: NewPage2Component },
-      { path: 'three', component: NewPage3Component },
-    ],
-  },
-];
+import { Amplify } from 'aws-amplify';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthGuard } from './core/guard/authGuard/auth.guard';
+import { FlexLayoutModule } from '@angular/flex-layout';
+Amplify.configure({
+  Auth: {
+    Cognito: {
+      userPoolId: 'eu-central-1_veJdFHtdR',
+      userPoolClientId: '6vsu2r9vdgca3es45ibtmg15if'
+    }
+  }
+});
 
 @NgModule({
   declarations: [
@@ -79,6 +69,7 @@ export const routerExp: Route[] = [
     TestV1Component,
     FormComponentComponent,
     ItemComponentComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,14 +91,15 @@ export const routerExp: Route[] = [
     MatMenuModule,
     MatTableModule,
     MatCheckboxModule,
-    RouterModule.forRoot(routerExp),
     ReactiveFormsModule,
     PipeModule,
     MatNativeDateModule,
     DirectiveModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AmplifyAuthenticatorModule,
+    FlexLayoutModule
   ],
-  providers: [PromiseService],
+  providers: [PromiseService,AuthGuard,AppRoutingModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
