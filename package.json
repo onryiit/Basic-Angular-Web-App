@@ -25,6 +25,7 @@
     "@angular/router": "^16.0.0",
     "@aws-amplify/core": "^6.5.3",
     "@aws-amplify/ui-angular": "^5.0.30",
+    "@katoid/angular-grid-layout": "^3.0.0",
     "@ngx-translate/core": "^16.0.3",
     "@ngx-translate/http-loader": "^16.0.0",
     "aws-amplify": "^6.8.2",

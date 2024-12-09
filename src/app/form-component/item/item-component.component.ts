@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelect } from '@angular/material/select';
 import * as moment from 'moment';
+import { FormService } from '../form.service';
 @Component({
   selector: 'app-item-component',
   templateUrl: './item-component.component.html',
@@ -27,7 +28,8 @@ export class ItemComponentComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
-    public dialogRef: MatDialogRef<ItemComponentComponent>
+    public dialogRef: MatDialogRef<ItemComponentComponent>,
+    private formService:FormService
   ) {}
   ngOnInit(): void {
     this.createForm();
@@ -62,6 +64,9 @@ export class ItemComponentComponent implements OnInit, AfterViewInit {
     const data = this.currentForm.getRawValue();
     data.date = moment(data.date).utc().unix();
     localStorage.setItem('formData', JSON.stringify(data));
+    this.formService.createForm(data).subscribe((res:any)=>{
+      console.log(res)
+    })
     this.dialogRef.close();
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemComponentComponent } from './item/item-component.component';
+import { FormService } from './form.service';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -16,8 +17,18 @@ export interface PeriodicElement {
 export class FormComponentComponent implements OnInit {
   displayedColumns: string[] = ['header', 'type', 'checkbox', 'date'];
   dataSource: any;
-  constructor(private dialog: MatDialog) {}
-  ngOnInit(): void {}
+  constructor(private dialog: MatDialog,private formService:FormService) {}
+  ngOnInit(): void {
+    this.formService.getForms().subscribe((val:any)=>{
+      console.log(val)
+      if (val) {
+        this.dataSource = val;
+        console.log('Güncellenmiş Data:', this.dataSource);
+      } else {
+        console.log('Veri bulunamadı veya geçersiz!');
+      }
+    });
+  }
   openDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string
@@ -29,19 +40,15 @@ export class FormComponentComponent implements OnInit {
       exitAnimationDuration,
     });
     dialogRef.afterClosed().subscribe(() => {
-      const data = localStorage.getItem('formData');
-      let arrayData: any[] = [];
-      if (data) {
-        if (Array.isArray(data)) {
-          this.dataSource = JSON.parse(data);
+      this.formService.getForms().subscribe((val:any)=>{
+        console.log(val)
+        if (val) {
+          this.dataSource = val;
+          console.log('Güncellenmiş Data:', this.dataSource);
         } else {
-          arrayData.push(JSON.parse(data));
-          this.dataSource = arrayData;
+          console.log('Veri bulunamadı veya geçersiz!');
         }
-        console.log('Güncellenmiş Data:', this.dataSource);
-      } else {
-        console.log('Veri bulunamadı veya geçersiz!');
-      }
-    });
+      });
+    })
   }
 }

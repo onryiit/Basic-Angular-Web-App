@@ -44,11 +44,21 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AuthGuard } from './core/guard/authGuard/auth.guard';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { KtdGridModule } from '@katoid/angular-grid-layout';
+import { DragDropGrdiComponent } from './drag-drop-grdi/drag-drop-grdi.component';
+import { MatChipsModule } from '@angular/material/chips';
+
+
+
+
+
+
+
 Amplify.configure({
   Auth: {
     Cognito: {
-      userPoolId: 'eu-central-1_veJdFHtdR',
-      userPoolClientId: '6vsu2r9vdgca3es45ibtmg15if'
+      userPoolId: '<user-pool-id>',
+      userPoolClientId: '<user-pool-client-id>'
     }
   }
 });
@@ -70,6 +80,7 @@ Amplify.configure({
     FormComponentComponent,
     ItemComponentComponent,
     SignInComponent,
+    DragDropGrdiComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +108,9 @@ Amplify.configure({
     DirectiveModule,
     MatTooltipModule,
     AmplifyAuthenticatorModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    KtdGridModule,
+    MatChipsModule
   ],
   providers: [PromiseService,AuthGuard,AppRoutingModule],
   bootstrap: [AppComponent],

@@ -13,6 +13,7 @@ import { NewPage1Component } from './new-page1/new-page1.component';
 import { NewPage2Component } from './new-page2/new-page2.component';
 import { NewPage3Component } from './new-page3/new-page3.component';
 import { AuthGuard } from './core/guard/authGuard/auth.guard';
+import { DragDropGrdiComponent } from './drag-drop-grdi/drag-drop-grdi.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'rxjsSubject', component: RxjsSubjectComponent, canActivate: [AuthGuard] },
   { path: 'testV1', component: TestV1Component, canActivate: [AuthGuard] },
   { path: 'form', component: FormComponentComponent, canActivate: [AuthGuard] },
+  { path: 'grid', component: DragDropGrdiComponent, canActivate: [AuthGuard] },
   { path: 'sign-in', component: SignInComponent },
   {
     path: 'newpage',
